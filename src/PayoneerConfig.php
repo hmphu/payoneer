@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:24:25
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:08:30
+ * @Last Modified time: 2016-01-11 14:33:30
  */
 
 namespace hmphu\payoneer;
@@ -15,6 +15,9 @@ namespace hmphu\payoneer;
  */
 class PayoneerConfig
 {   
+	const SANDBOX_API_URL = 'https://api.sandbox.payoneer.com/Payouts/HttpApi/API.aspx?';
+	const PRODUCTION_API_URL = 'https://api.payoneer.com/payouts/HttpAPI/API.aspx?';
+
     /**
      * API endpoint url
      */
@@ -41,8 +44,14 @@ class PayoneerConfig
      * @param $apiPassword
      * @param $partnerId
      */
-    function __construct($apiEndpoint, $apiUser, $apiPassword, $partnerId) {
-        $this->apiEndpoint = $apiEndpoint;
+    function __construct($apiUser, $apiPassword, $partnerId, $sandbox = true) {
+    	if($sandbox == true){
+    		$this->apiEndpoint = static::SANDBOX_API_URL;	
+    	}
+    	else{
+    		$this->apiEndpoint = static::PRODUCTION_API_URL;
+    	}
+    	
         $this->apiUser = $apiUser;
         $this->apiPassword = $apiPassword;
         $this->partnerId = $partnerId;

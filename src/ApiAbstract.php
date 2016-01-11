@@ -4,12 +4,13 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:19:26
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:14:43
+ * @Last Modified time: 2016-01-11 14:34:58
  */
 
 namespace hmphu\payoneer;
 
 use hmphu\payoneer\request\RequestInterface;
+use GuzzleHttp\Client;
 
 /**
  * Class ApiAbstract
