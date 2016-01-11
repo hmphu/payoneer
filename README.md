@@ -1,2 +1,2 @@
-# yii2-payoneer
-Yii2 Payoneer
+# PHP Payoneer
+Payoneer PHP SDK
