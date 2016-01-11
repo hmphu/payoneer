@@ -1,0 +1,13 @@
+{
+    "name": "hmphu/yii2-payoneer",
+    "description": "Payonner API Intergration for Yii2",
+    "type": "package",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Phu Hoang",
+            "email": "me@hmphu.com"
+        }
+    ],
+    "require": {}
+}
