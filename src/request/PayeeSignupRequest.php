@@ -3,7 +3,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:37:50
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 13:40:36
+ * @Last Modified time: 2016-01-11 14:46:09
  */
 
 namespace hmphu\payonee\request;
@@ -30,7 +30,7 @@ class PayeeSignupRequest extends RequestAbstract implements RequestInterface {
         $redirectUrl,
         $sessionId = '',
         $redirectTime = '10',
-        $testAccount = 'false',
+        $testAccount = 'false', //Auto approve account or not
         $xmlResponse = 'true',
         array $payoutMethods = array(
             ApiAbstract::PAYOUT_CARD,

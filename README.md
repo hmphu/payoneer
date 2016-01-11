@@ -1,2 +1,2 @@
 # PHP Payoneer
-Payoneer PHP SDK
+PHP wrapper for Payoneer API
