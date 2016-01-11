@@ -1,7 +1,7 @@
 {
-    "name": "hmphu/yii2-payoneer",
-    "description": "Payonner API Intergration for Yii2",
-    "type": "package",
+    "name": "hmphu/payoneer",
+    "description": "Payonner API Implement in PHP",
+    "type": "library",
     "license": "GNU",
     "authors": [
         {
@@ -9,5 +9,17 @@
             "email": "me@hmphu.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "hmphu\\payoneer\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "hmphu\\payoneer\\": ""
+        }
+    }
 }
