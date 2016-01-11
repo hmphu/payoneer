@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "pn/epp-xml2array" : "*"
+        "verdant/xml2array" : "*"
     },
     "autoload": {
         "psr-4": {
