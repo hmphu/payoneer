@@ -10,16 +10,17 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "pn/epp-xml2array" : "*"
     },
     "autoload": {
         "psr-4": {
-            "hmphu\\payoneer\\": ""
+            "hmphu\\payoneer\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "hmphu\\payoneer\\": ""
+            "hmphu\\payoneer\\": "src"
         }
     }
 }
