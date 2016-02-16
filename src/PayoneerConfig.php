@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:24:25
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:33:30
+ * @Last Modified time: 2016-02-16 09:56:51
  */
 
 namespace hmphu\payoneer;
@@ -15,8 +15,8 @@ namespace hmphu\payoneer;
  */
 class PayoneerConfig
 {   
-	const SANDBOX_API_URL = 'https://api.sandbox.payoneer.com/Payouts/HttpApi/API.aspx?';
-	const PRODUCTION_API_URL = 'https://api.payoneer.com/payouts/HttpAPI/API.aspx?';
+	const SANDBOX_API_URL = 'http://api.sandbox.payoneer.com/Payouts/HttpApi/API.aspx';
+	const PRODUCTION_API_URL = 'http://api.payoneer.com/payouts/HttpAPI/API.aspx';
 
     /**
      * API endpoint url
