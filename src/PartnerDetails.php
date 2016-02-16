@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 14:02:33
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:08:30
+ * @Last Modified time: 2016-02-16 17:15:18
  */
 
 namespace hmphu\payoneer;
@@ -16,54 +16,25 @@ namespace hmphu\payoneer;
 class PartnerDetails
 {
     
-    /**
-     * @var
-     */
+    /** @var **/
     public $userName;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $password;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $prid;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $apuid;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $sessionid;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $redirect;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $redirectTime;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $BlockType;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $PayoutMethodList;
-    
-    /**
-     * @var
-     */
+    /** @var **/
     public $RegMode;
     
     /**

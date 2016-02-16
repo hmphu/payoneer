@@ -3,20 +3,20 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:37:50
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:46:09
+ * @Last Modified time: 2016-02-16 17:06:52
  */
 
-namespace hmphu\payonee\request;
+namespace hmphu\payoneer\request;
 
 use hmphu\payoneer\ApiAbstract;
 
 /**
  * Class PayeeSignupRequest
- * @package hmphu\payonee\request
+ * @package hmphu\payoneer\request
  */
 class PayeeSignupRequest extends RequestAbstract implements RequestInterface {
     /**
-     * @param int    $payeeId
+     * @param string $payeeId
      * @param        $sessionId
      * @param        $redirectUrl
      * @param        $redirectTime
@@ -36,8 +36,8 @@ class PayeeSignupRequest extends RequestAbstract implements RequestInterface {
             ApiAbstract::PAYOUT_CARD,
             ApiAbstract::PAYOUT_ACH,
             // TODO Figure out why enabling the two options below causes an 'Unauthorized action' error.
-           ApiAbstract::PAYOUT_CHECK,
-           ApiAbstract::PAYOUT_DEPOSIT
+           // ApiAbstract::PAYOUT_CHECK,
+           // ApiAbstract::PAYOUT_DEPOSIT
         ),
         $achMode = ApiAbstract::ACH_MODE_REGULAR
     ) {

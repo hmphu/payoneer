@@ -44,33 +44,8 @@ abstract class ApiAbstract
     	$client = new Client();
     	$parameters = array_merge($this->config->getParameterArray(), $request->getParameterArray());
     	$url = $this->config->apiEndpoint . '?mname=' . $methodName;
-    	
-    	$res = $client->request($request->method, $url, $parameters);
+    	$res = $client->post($url, ['form_params' => $parameters]);
     	$this->response = $res;
     	return $res;
     }
-
-	/**
-	* Convert XML string to array.
-	*
-	* @param String $xml_string
-	* @return mixed
-	*/
-	protected function xmlToArray($xml_string) {
-		return \Verdant\XML2Array::createArray($xml_string);
-	}
-
-	/**
-	* @return ResponseInterface
-	*/
-	public function getResponse($key = 'PayoneerResponse') {
-		$responseArray = $this->xmlToArray($this->response->getBody()->getContents());
-		if(!empty($key)){
-			if(array_key_exists($key, $responseArray))
-				return $responseArray[$key];
-			return false;
-		}
-
-		return $responseArray;
-	}
 }

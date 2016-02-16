@@ -4,20 +4,10 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:19:26
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:13:20
+ * @Last Modified time: 2016-02-16 18:33:25
  */
 
 namespace hmphu\payoneer;
-
-use hmphu\payonee\request\PayeeSignupRequest;
-use hmphu\payoneer\request\PayeeSignupAutoPopulationRequest;
-use hmphu\payoneer\request\BasicRequest;
-use hmphu\payoneer\request\PerformPayoutPaymentRequest;
-use hmphu\payoneer\request\GetPaymentStatusRequest;
-use hmphu\payoneer\request\PayeeRequest;
-use hmphu\payoneer\request\ChangePayeeIdRequest;
-use hmphu\payoneer\request\GetPayeesReportRequest;
-use hmphu\payoneer\request\BasicPaymentRequest;
 
 /**
  * Class PayoneerApi
@@ -25,12 +15,12 @@ use hmphu\payoneer\request\BasicPaymentRequest;
  */
 class PayoneerApi extends ApiAbstract
 {
-    
+	
     /**
      * @param PayoneerConfig $config
      */
     function __construct(PayoneerConfig $config) {
-        parent::__construct($config);
+    	parent::__construct($config);
     }
     
     /**
@@ -40,9 +30,10 @@ class PayoneerApi extends ApiAbstract
      * @throws \Exception
      * @return array
      */
-    public function getToken(PayeeSignupRequest $request) {
-        $response = $this->call('GetToken', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    public function getToken(request\PayeeSignupRequest $request) {
+    	$this->call('GetToken', $request);
+    	$response = new response\PayeeSignupResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -52,9 +43,10 @@ class PayoneerApi extends ApiAbstract
      * @throws \Exception
      * @return array
      */
-    public function getTokenXML(PayeeSignupAutoPopulationRequest $request) {
-        $response = $this->call('GetTokenXML', $request);
-        return $this->xmlToArray($response->xml());
+    public function getTokenXML(request\PayeeSignupAutoPopulationRequest $request) {
+    	$this->call('GetTokenXML', $request);
+    	$response = new \response\PayeeSignupAutoPopulationResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -64,8 +56,9 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getApiStatus() {
-        $response = $this->call('Echo', new BasicRequest());
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$this->call('Echo', new request\BasicRequest());
+    	$response = new response\BasicResponse($this->response);
+    	return $response->getData()['Description'];
     }
     
     /**
@@ -74,8 +67,9 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getVersion() {
-        $response = $this->call('GetVersion', new BasicRequest());
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$this->call('GetVersion', new request\BasicRequest());
+    	$response = new response\BasicResponse($this->response);
+    	return $response->getData()['Version'];
     }
     
     /**
@@ -91,9 +85,10 @@ class PayoneerApi extends ApiAbstract
      * @param PerformPayoutPaymentRequest $request
      * @return mixed
      */
-    public function performPayoutPayment(PerformPayoutPaymentRequest $request) {
-        $response = $this->call('PerformPayoutPayment', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    public function performPayoutPayment(request\PerformPayoutPaymentRequest $request) {
+    	$this->call('PerformPayoutPayment', $request);
+    	$response = new response\PerformPayoutPaymentResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -105,9 +100,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getPaymentStatus($payeeId, $paymentId) {
-        $request = new GetPaymentStatusRequest($payeeId, $paymentId);
-        $response = $this->call('GetPaymentStatus', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\GetPaymentStatusRequest($payeeId, $paymentId);
+    	$this->call('GetPaymentStatus', $request);
+    	$response = new response\GetPaymentStatusResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -116,9 +112,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getAccountDetails() {
-        $request = new BasicRequest();
-        $response = $this->call('GetAccountDetails', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\BasicRequest();
+    	$this->call('GetAccountDetails', $request);
+    	$response = new response\GetAccountDetailsResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -129,9 +126,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getPayeeDetails($payeeId) {
-        $request = new PayeeRequest($payeeId);
-        $response = $this->call('GetPayeeDetails', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\PayeeRequest($payeeId);
+    	$this->call('GetPayeeDetails', $request);
+    	$response = new response\GetPayeeDetailsResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -143,9 +141,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function changePayeeId($oldId, $newId) {
-        $request = new ChangePayeeIdRequest($oldId, $newId);
-        $response = $this->call('ChangePayeeID', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\ChangePayeeIdRequest($oldId, $newId);
+    	$this->call('ChangePayeeID', $request);
+    	$response = new response\ChangePayeeIDResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -157,9 +156,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getPayeesReport($startDate, $endDate) {
-        $request = new GetPayeesReportRequest($startDate, $endDate);
-        $response = $this->call('GetPayeesReport', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\GetPayeesReportRequest($startDate, $endDate);
+    	$this->call('GetPayeesReport', $request);
+    	$response = new response\GetPayeesReportResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -169,9 +169,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getSinglePayeeReport($payeeId) {
-        $request = new PayeeRequest($payeeId);
-        $response = $this->call('GetSinglePayeeReport', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\PayeeRequest($payeeId);
+    	$this->call('GetSinglePayeeReport', $request);
+    	$response = new response\GetSinglePayeeReportResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -181,9 +182,10 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function getUnclaimedPayments() {
-        $request = new BasicRequest();
-        $response = $this->call('GetUnclaimedPaymentsXML', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\BasicRequest();
+    	$this->call('GetUnclaimedPaymentsXML', $request);
+    	$response = new response\GetUnclaimedPaymentsResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -193,9 +195,23 @@ class PayoneerApi extends ApiAbstract
      * @return string
      */
     public function getUnclaimedPaymentsCSV() {
-        $request = new BasicRequest();
-        $response = $this->call('GetUnclaimedPaymentsCSV', $request);
-        return $response->getBody()->getContents();
+    	$request = new request\BasicRequest();
+    	$this->call('GetUnclaimedPaymentsCSV', $request);
+    	$response = new response\GetUnclaimedPaymentsCSVResponse($this->response);
+    	return $response->getData();
+    }
+
+    /**
+     * This method returns a CSV string of all payments that have
+     * not yet been claimed.
+     *
+     * @return string
+     */
+    public function movePayeeProgram() {
+    	$request = new request\MovePayeeProgramRequest();
+    	$this->call('movepayeeprogram', $request);
+    	$response = new response\MovePayeeProgramResponse($this->response);
+    	return $response->getData();
     }
     
     /**
@@ -206,8 +222,9 @@ class PayoneerApi extends ApiAbstract
      * @return mixed
      */
     public function cancelPayment($paymentId) {
-        $request = new BasicPaymentRequest($paymentId);
-        $response = $this->call('CancelPayment', $request);
-        return $this->xmlToArray($response->getBody()->getContents());
+    	$request = new request\BasicPaymentRequest($paymentId);
+    	$this->call('CancelPayment', $request);
+    	$response = new response\CancelPaymentResponse($this->response);
+    	return $response->getData();
     }
 }
