@@ -3,7 +3,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:37:50
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-02-16 16:50:50
+ * @Last Modified time: 2016-02-16 19:39:35
  */
 
 namespace hmphu\payoneer\response;
@@ -18,7 +18,6 @@ class GetPayeeDetailsResponse extends ResponseAbstract implements ResponseInterf
 	
 	/** @var array Status codes **/
 	public $errors = [
-		'000' => 'OK (Request accepted).',
 		'001' => 'Field format is invalid or is not supported.',
 		'002' => 'Payee does not exist.',
 		'006' => 'Internal error.',
