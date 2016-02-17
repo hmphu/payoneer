@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:24:25
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-02-16 15:23:33
+ * @Last Modified time: 2016-02-17 17:33:27
  */
 
 namespace hmphu\payoneer;
@@ -39,12 +39,18 @@ class PayoneerConfig
     public $partnerId;
     
     /**
+     * API mode
+     */
+    public $sandbox = true;
+
+    /**
      * @param $apiEndpoint
      * @param $apiUser
      * @param $apiPassword
      * @param $partnerId
      */
     function __construct($apiUser, $apiPassword, $partnerId, $sandbox = true) {
+    	$this->sandbox = $sandbox;
     	if($sandbox == true){
     		$this->apiEndpoint = static::SANDBOX_API_URL;	
     	}

@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:36:01
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-02-16 18:24:46
+ * @Last Modified time: 2016-02-16 20:00:40
  */
 
 namespace hmphu\payoneer\response;
@@ -66,7 +66,7 @@ abstract class ResponseAbstract
 		if($this->code){
 			$errors = array_merge($this->_generalErrors,$this->errors);
 			if(array_key_exists($this->code, $errors)){
-				$message = $this->code. " - " .($this->error ? $this->error : $errors[$this->code]);
+				$message = $this->error ? $this->error : $errors[$this->code];
 				throw new \Exception($message, is_long($this->code) ? $this->code : 0);
 			}
 		}

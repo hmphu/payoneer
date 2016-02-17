@@ -4,7 +4,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:50:21
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-01-11 14:08:30
+ * @Last Modified time: 2016-02-17 10:44:47
  */
 
 namespace hmphu\payoneer\request;
@@ -26,7 +26,10 @@ class PerformPayoutPaymentRequest extends RequestAbstract implements RequestInte
      * @param null $groupId
      * @param null $currency
      */
-    function __construct($programId, $paymentId, $payeeId, $amount, $description, $paymentDate, $groupId = null, $currency = null) {
+    function __construct($programId, $paymentId, $payeeId, $amount, $description, $paymentDate = null, $groupId = null, $currency = null) {
+    	if(!$paymentDate)
+        	$paymentDate = Date('m/d/Y h:i:s', time());
+        
         $this->parameters['p4'] = $programId;
         $this->parameters['p5'] = $paymentId;
         $this->parameters['p6'] = $payeeId;

@@ -3,7 +3,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-01-11 13:37:50
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-02-16 17:23:35
+ * @Last Modified time: 2016-02-17 10:53:39
  */
 
 namespace hmphu\payoneer\response;
@@ -21,7 +21,7 @@ class PerformPayoutPaymentResponse extends ResponseAbstract implements ResponseI
 		'001' => 'Field format is invalid or is not supported.',
 		'002' => 'Payee does not exist.',
 		'003' => 'Insufficient funds',
-		'004' => 'Payment ID {{Internal Payment ID}} already exists.',
+		'004' => 'Payment ID already exists.',
 		'006' => 'Internal error.',
 		'008' => 'Internal error.',
 		'011' => 'Funding not enabled.',
