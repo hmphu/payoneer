@@ -41,7 +41,8 @@ abstract class ApiAbstract
      * @return mixed
      */
     public function call($methodName, RequestInterface $request) {
-    	$client = new Client();
+    	$client = new Client(['verify' => false]);
+    	// $client->setDefaultOption('verify', false);
     	$parameters = array_merge($this->config->getParameterArray(), $request->getParameterArray());
     	$url = $this->config->apiEndpoint . '?mname=' . $methodName;
     	$res = $client->post($url, ['form_params' => $parameters]);
