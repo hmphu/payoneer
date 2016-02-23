@@ -2,6 +2,25 @@
 
 A unofficial PHP wrapper for Payoneer API
 
+## Installation
+
+The preferred way to install this extension is through composer.
+
+Either run
+
+```
+php composer.phar require --prefer-dist hmphu/payoneer
+```
+
+or add
+
+```
+"hmphu/payoneer": "*"
+```
+
+to the require section of your composer.json.
+
+
 ## Supported functions
 
 #### Get signup link
@@ -80,7 +99,7 @@ public function changePayeeId($oldId, $newId) {}
 ```
 
 #### Get payees report
-    /**
+
 > This method returns all payments made to payees, grouped by payment method.
 
 ```
